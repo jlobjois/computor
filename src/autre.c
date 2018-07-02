@@ -1,0 +1,76 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   autre.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/29 18:58:01 by jlobjois          #+#    #+#             */
+/*   Updated: 2017/09/29 18:58:03 by jlobjois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "computor.h"
+
+void	affichagesuite3(t_eq *eq)
+{
+	int i;
+
+	i = eq->nbx;
+	while (eq->deg[i] == 0 && eq->x[i] == 0)
+		i--;
+	ft_putstr("Polynomial degree: ");
+	affdouble(eq->deg[i]);
+	write(1, "\n", 1);
+	ft_error("The polynomial degree is stricly greater than 2, I can't solve.");
+}
+
+void	norme4(t_eq *eq)
+{
+	if (eq->i != 0)
+	{
+		write(1, "+ ", 2);
+	}
+	affdouble(eq->x[eq->i]);
+	write(1, " * X^", 5);
+	affdouble(eq->deg[eq->i]);
+	write(1, " ", 1);
+}
+
+void	affichage3(t_eq *eq)
+{
+	ft_putstr("Reduced form: ");
+	eq->i = 0;
+	while (eq->i <= eq->nbx)
+	{
+		if (eq->x[eq->i] != 0)
+		{
+			if (eq->x[eq->i] < 0)
+			{
+				eq->x[eq->i] *= -1;
+				write(1, "- ", 2);
+				affdouble(eq->x[eq->i]);
+				write(1, " * X^", 5);
+				affdouble(eq->deg[eq->i]);
+				write(1, " ", 1);
+			}
+			else
+				norme4(eq);
+		}
+		eq->i++;
+	}
+	ft_putstr("= 0\n");
+	affichagesuite3(eq);
+}
+
+void	affdouble(double data)
+{
+	if (data < 0)
+	{
+		write(1, "-", 1);
+		data *= -1;
+	}
+	ft_putnbr((int)data);
+	write(1, ".", 1);
+	ft_putnbr((int)((data + 0.00000005 - (double)((int)data)) * 1000000));
+}
