@@ -26,9 +26,7 @@ void	norme5(t_eq *eq)
 	else
 	{
 		if (eq->i != 0)
-		{
 			write(1, "+ ", 2);
-		}
 		affdouble(eq->x[eq->i]);
 		write(1, " * X^", 5);
 		ft_putnbr((int)eq->deg[eq->i]);

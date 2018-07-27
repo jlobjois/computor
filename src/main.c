@@ -56,6 +56,7 @@ void	norme2(t_eq *eq, char **troll0, char **troll1)
 	eq->i = 0;
 	eq->passage = 0;
 	parser(eq, troll1, eq->max1);
+	eq->j = 0;
 	calcul(eq);
 }
 

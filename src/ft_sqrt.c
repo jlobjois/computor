@@ -35,7 +35,7 @@ double	ft_sqrt(double delta)
 
 void	affichagefin(t_eq *eq)
 {
-	if ((eq->deg[2] == 2 || eq->deg[1] == 2) && eq->x[2] != 0)
+	if ((eq->deg[2] == 2 && eq->x[2] != 0) || (eq->deg[1] == 2 && eq->x[1] != 0))
 	{
 		if (eq->delta > 0)
 		{
