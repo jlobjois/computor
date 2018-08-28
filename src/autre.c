@@ -63,14 +63,48 @@ void	affichage3(t_eq *eq)
 	affichagesuite3(eq);
 }
 
-void	affdouble(double data)
+static void suiteaff(int valeur)
 {
+		if (valeur < 9)
+	{
+		ft_putstr("00000");
+		ft_putnbr(valeur);
+	}
+		else if (valeur < 99)
+	{
+		ft_putstr("0000");
+		ft_putnbr(valeur);
+	}
+		else if (valeur < 999)
+	{
+		ft_putstr("000");
+		ft_putnbr(valeur);
+	}
+}
+void		affdouble(double data)
+{
+	int valeur;
+
+	valeur = (int)((data + 0.00000005 - (double)((int)data)) * 1000000);
 	if (data < 0)
 	{
-		write(1, "-", 1);
+		ft_putchar('-');
 		data *= -1;
 	}
 	ft_putnbr((int)data);
-	write(1, ".", 1);
-	ft_putnbr((int)((data + 0.00000005 - (double)((int)data)) * 1000000));
+	ft_putchar('.');
+	if (valeur < 999)
+		suiteaff(valeur);
+	else if (valeur < 9999)
+	{
+		ft_putstr("00");
+		ft_putnbr(valeur);
+	}
+	else if (valeur < 99999)
+	{
+		ft_putstr("0");
+		ft_putnbr(valeur);
+	}
+	else
+		ft_putnbr(valeur);
 }
