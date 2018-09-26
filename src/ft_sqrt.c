@@ -33,31 +33,41 @@ double	ft_sqrt(double delta)
 	return (try);
 }
 
+void	anditsover(t_eq *eq)
+{
+	ft_putstr("Discriminant is strictly negative, ");
+	ft_putstr("the two solutions are:\n");
+	affdouble(eq->solr);
+	ft_putstr(" + ");
+	affdouble(eq->sol1i);
+	ft_putstr("i\n");
+	affdouble(eq->solr);
+	ft_putstr(" + ");
+	affdouble(eq->sol2i);
+	ft_putstr("i\n");
+}
+
 void	affichagefin(t_eq *eq)
 {
-	if ((eq->deg[2] == 2 && eq->x[2] != 0) || (eq->deg[1] == 2 && eq->x[1] != 0))
+	if ((eq->deg[2] == 2 && eq->x[2] != 0)
+	|| (eq->deg[1] == 2 && eq->x[1] != 0))
 	{
 		if (eq->delta > 0)
 		{
-			printf("Discriminant is strictly positive, ");
-			printf("the two solutions are:\n");
+			ft_putstr("Discriminant is strictly positive, ");
+			ft_putstr("the two solutions are:\n");
 			affdouble(eq->sol1);
-			printf("\n");
+			write(1, "\n", 1);
 			affdouble(eq->sol2);
-			printf("\n");
+			write(1, "\n", 1);
 		}
 		if (eq->delta < 0)
-		{
-			printf("Discriminant is strictly negative, ");
-			printf("the two solutions are:\n");
-			printf("%f + %fi\n%f", eq->solr, eq->sol1i, eq->solr);
-			printf(" + %fi\n", eq->sol2i);
-		}
+			anditsover(eq);
 		if (eq->delta == 0)
 		{
-			printf("Discriminant equal zero, the solution is:\n");
+			ft_putstr("Discriminant equal zero, the solution is:\n");
 			affdouble(eq->sol1);
-			printf("\n");
+			write(1, "\n", 1);
 		}
 	}
 }
@@ -69,6 +79,8 @@ void	affichagesuite(t_eq *eq)
 	i = eq->nbx;
 	while (eq->deg[i] == 0 && eq->x[i] == 0)
 		i--;
-	printf("Polynomial degree: %d\n", eq->deg[i]);
+	ft_putstr("Polynomial degree: ");
+	ft_putnbr(eq->deg[i]);
+	write(1, "\n", 1);
 	affichagefin(eq);
 }

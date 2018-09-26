@@ -42,15 +42,15 @@ void	parserfin(t_eq *eq)
 	eq->test = 0;
 }
 
-void	parsersuite2(t_eq *eq, char **troll, int j)
+void	parsersuite2(t_eq *eq, char **side, int j)
 {
 	if (eq->i <= (j - 1))
 	{
 		if (eq->test == 2)
-			normeparser4(eq, troll);
+			normeparser4(eq, side);
 		if (eq->test == 3)
 		{
-			normeparser5(eq, troll);
+			normeparser5(eq, side);
 			eq->test++;
 		}
 	}
@@ -62,50 +62,50 @@ void	parsersuite2(t_eq *eq, char **troll, int j)
 	parserfin(eq);
 }
 
-void	parsersuite(t_eq *eq, char **troll, int j)
+void	parsersuite(t_eq *eq, char **side, int j)
 {
 	if (eq->test == 0)
 	{
-		if ((troll[eq->i][0] != '+' && troll[eq->i][0] != '-')
-		|| troll[eq->i][1] != '\0')
+		if ((side[eq->i][0] != '+' && side[eq->i][0] != '-')
+		|| side[eq->i][1] != '\0')
 			ft_error("wrong arguments 2");
-		if (troll[eq->i][0] == '+')
+		if (side[eq->i][0] == '+')
 			eq->signe = 1;
-		if (troll[eq->i][0] == '-')
+		if (side[eq->i][0] == '-')
 			eq->signe = -1;
 		eq->test++;
 		eq->i++;
-		if (troll[eq->i][0] == '\0')
+		if (side[eq->i][0] == '\0')
 			parserfin(eq);
 	}
 	if (eq->test == 1)
 	{
-		if ((eq->tmp = ft_atof(troll[eq->i])) == 0.0)
+		if ((eq->tmp = ft_atof(side[eq->i])) == 0.0)
 			ft_error("wrong arguments 3");
-		ft_str_is_numeric2(troll[eq->i]);
+		ft_str_is_numeric2(side[eq->i]);
 		eq->test++;
 		eq->i++;
 	}
-	parsersuite2(eq, troll, j);
+	parsersuite2(eq, side, j);
 }
 
-void	parser(t_eq *eq, char **troll, int j)
+void	parser(t_eq *eq, char **side, int j)
 {
 	eq->signe = 1;
 	if (j < 3)
 	{
-		normeparser1(eq, troll, j);
-		normeparser2(eq, troll, j);
+		normeparser1(eq, side, j);
+		normeparser2(eq, side, j);
 	}
 	else
 	{
-		while (troll[eq->i] && troll[eq->i + 1] != '\0')
+		while (side[eq->i] && side[eq->i + 1] != '\0')
 		{
 			if (eq->i == 0 && eq->passage < 1)
 			{
-				if (((eq->tmp = ft_atof(troll[eq->i])) == 0.000000))
+				if (((eq->tmp = ft_atof(side[eq->i])) == 0.000000))
 				{
-					normeparser3(eq, troll);
+					normeparser3(eq, side);
 					eq->test++;
 				}
 				else
@@ -113,7 +113,7 @@ void	parser(t_eq *eq, char **troll, int j)
 				eq->passage++;
 			}
 			eq->i++;
-			parsersuite(eq, troll, j);
+			parsersuite(eq, side, j);
 		}
 	}
 }

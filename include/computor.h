@@ -14,7 +14,6 @@
 # define COMPUTOR_H
 
 # include "libft.h"
-# include "stdio.h"
 
 typedef struct		s_eq
 {
@@ -45,30 +44,30 @@ typedef struct		s_eq
 	double			*x;
 }					t_eq;
 
-void 				normeparser1 (t_eq *eq, char **troll, int j);
-void 				normeparser2 (t_eq *eq, char **troll, int j);
-void 				normeparser3(t_eq *eq, char **troll);
-void 				normeparser4(t_eq *eq, char **troll);
-void 				normeparser5(t_eq *eq, char **troll);
-void 				normeparser6(t_eq *eq);
-void 				ft_str_is_numeric2(char *str);
-void 				parserfin(t_eq *eq);
-void 				parsersuite2(t_eq *eq, char **tab, int j);
-void 				parsersuite(t_eq *eq, char **tab, int j);
-void 				parser(t_eq *eq, char **tab, int j);
+void				normeparser1 (t_eq *eq, char **side, int j);
+void				normeparser2 (t_eq *eq, char **side, int j);
+void				normeparser3(t_eq *eq, char **side);
+void				normeparser4(t_eq *eq, char **side);
+void				normeparser5(t_eq *eq, char **side);
+void				normeparser6(t_eq *eq);
+void				ft_str_is_numeric2(char *str);
+void				parserfin(t_eq *eq);
+void				parsersuite2(t_eq *eq, char **tab, int j);
+void				parsersuite(t_eq *eq, char **tab, int j);
+void				parser(t_eq *eq, char **tab, int j);
 double				ft_sqrt(double delta);
 double				ft_atof(char const *nptr);
-void 				calcul(t_eq *eq);
-void 				affichagesuite (t_eq *eq);
-void 				affichage3(t_eq *eq);
-void 				affichage2(t_eq *eq);
-void 				affichage(t_eq *eq);
-void 				ft_error(char *str);
-void 				alwaystrue();
-void 				alwaysfalse(t_eq *eq);
-void 				xzero(t_eq *eq);
-void 				calcul1(t_eq *eq);
-void 				calcul2(t_eq *eq);
-void 				affdouble(double data);
+void				calcul(t_eq *eq);
+void				affichagesuite (t_eq *eq);
+void				affichage3(t_eq *eq);
+void				affichage2(t_eq *eq);
+void				affichage(t_eq *eq);
+void				ft_error(char *str);
+void				alwaystrue();
+void				alwaysfalse(t_eq *eq);
+void				xzero(t_eq *eq);
+void				calcul1(t_eq *eq);
+void				calcul2(t_eq *eq);
+void				affdouble(double data);
 
 #endif

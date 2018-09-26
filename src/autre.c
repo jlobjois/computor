@@ -12,9 +12,9 @@
 
 #include "computor.h"
 
-void	affichagesuite3(t_eq *eq)
+void		affichagesuite3(t_eq *eq)
 {
-	int i;
+	int		i;
 
 	i = eq->nbx;
 	while (eq->deg[i] == 0 && eq->x[i] == 0)
@@ -25,7 +25,7 @@ void	affichagesuite3(t_eq *eq)
 	ft_error("The polynomial degree is stricly greater than 2, I can't solve.");
 }
 
-void	norme4(t_eq *eq)
+void		norme4(t_eq *eq)
 {
 	if (eq->i != 0)
 	{
@@ -37,7 +37,7 @@ void	norme4(t_eq *eq)
 	write(1, " ", 1);
 }
 
-void	affichage3(t_eq *eq)
+void		affichage3(t_eq *eq)
 {
 	ft_putstr("Reduced form: ");
 	eq->i = 0;
@@ -63,33 +63,35 @@ void	affichage3(t_eq *eq)
 	affichagesuite3(eq);
 }
 
-static void suiteaff(int valeur)
+static void	suiteaff(int valeur)
 {
-		if (valeur < 9)
+	if (valeur < 9)
 	{
 		ft_putstr("00000");
 		ft_putnbr(valeur);
 	}
-		else if (valeur < 99)
+	else if (valeur < 99)
 	{
 		ft_putstr("0000");
 		ft_putnbr(valeur);
 	}
-		else if (valeur < 999)
+	else if (valeur < 999)
 	{
 		ft_putstr("000");
 		ft_putnbr(valeur);
 	}
 }
+
 void		affdouble(double data)
 {
-	int valeur;
+	int		valeur;
 
 	valeur = (int)((data + 0.00000005 - (double)((int)data)) * 1000000);
 	if (data < 0)
 	{
 		ft_putchar('-');
 		data *= -1;
+		valeur *= -1;
 	}
 	ft_putnbr((int)data);
 	ft_putchar('.');

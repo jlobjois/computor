@@ -18,44 +18,44 @@ void	ft_error(char *str)
 	exit(0);
 }
 
-void	norme(t_eq *eq, char **troll0)
+void	norme(t_eq *eq, char **side0)
 {
-	while (troll0[eq->max0])
+	while (side0[eq->max0])
 	{
-		if (troll0[eq->max0][0] == 'X')
+		if (side0[eq->max0][0] == 'X')
 		{
-			if (troll0[eq->max0][1] != '^')
-				ft_error("wrong arguments");
+			if (side0[eq->max0][1] != '^')
+				ft_error("wrong argument after X");
 			eq->nbx++;
 		}
 		eq->max0++;
 	}
 }
 
-void	norme1(t_eq *eq, char **troll1)
+void	norme1(t_eq *eq, char **side1)
 {
-	while (troll1[eq->max1])
+	while (side1[eq->max1])
 	{
-		if (troll1[eq->max1][0] == 'X')
+		if (side1[eq->max1][0] == 'X')
 		{
-			if (troll1[eq->max1][1] != '^')
-				ft_error("wrong arguments");
+			if (side1[eq->max1][1] != '^')
+				ft_error("wrong argument after X");
 			eq->nbx++;
 		}
 		eq->max1++;
 	}
 }
 
-void	norme2(t_eq *eq, char **troll0, char **troll1)
+void	norme2(t_eq *eq, char **side0, char **side1)
 {
 	ft_bzero(eq->x, sizeof(double) * (eq->nbx + 1));
 	ft_bzero(eq->deg, sizeof(int) * (eq->nbx + 1));
 	eq->postequal = 1;
-	parser(eq, troll0, eq->max0);
+	parser(eq, side0, eq->max0);
 	eq->postequal = -1;
 	eq->i = 0;
 	eq->passage = 0;
-	parser(eq, troll1, eq->max1);
+	parser(eq, side1, eq->max1);
 	eq->j = 0;
 	calcul(eq);
 }
@@ -63,27 +63,27 @@ void	norme2(t_eq *eq, char **troll0, char **troll1)
 int		main(int argc, char **argv)
 {
 	t_eq eq;
-	char **troll;
-	char **troll0;
-	char **troll1;
+	char **side;
+	char **side0;
+	char **side1;
 
 	ft_bzero(&eq, sizeof(eq));
 	if (argc != 2)
 		ft_error("wrong parameters");
-	if (!(troll = ft_strsplit(argv[1], '=')))
+	if (!(side = ft_strsplit(argv[1], '=')))
 		ft_error("error while strsplit");
-	if (!troll[0] || !troll[1])
-		ft_error("troll[0] and troll[1] do not exist");
-	if (troll[2] != NULL)
-		ft_error("less equals pls bro");
-	troll0 = ft_strsplit(troll[0], ' ');
-	troll1 = ft_strsplit(troll[1], ' ');
-	norme(&eq, troll0);
-	norme1(&eq, troll1);
+	if (!side[0] || !side[1])
+		ft_error("side[0] and side[1] do not exist");
+	if (side[2] != NULL)
+		ft_error("less equals pls");
+	side0 = ft_strsplit(side[0], ' ');
+	side1 = ft_strsplit(side[1], ' ');
+	norme(&eq, side0);
+	norme1(&eq, side1);
 	if (!(eq.x = malloc((sizeof(double)) * (eq.nbx + 1))))
 		ft_error("malloc error");
 	if (!(eq.deg = malloc((sizeof(int)) * (eq.nbx + 1))))
 		ft_error("malloc error");
-	norme2(&eq, troll0, troll1);
+	norme2(&eq, side0, side1);
 	return (0);
 }

@@ -12,62 +12,62 @@
 
 #include "computor.h"
 
-void	normeparser1(t_eq *eq, char **troll, int j)
+void	normeparser1(t_eq *eq, char **side, int j)
 {
 	if (j == 1)
 	{
-		if (((eq->tmp = ft_atof(troll[eq->i])) == 0.000000))
+		if (((eq->tmp = ft_atof(side[eq->i])) == 0.000000))
 		{
-			if (troll[eq->i][0] != '0' || troll[eq->i][1] != '\0')
-				ft_error("wrong arguments");
+			if (side[eq->i][0] != '0' || side[eq->i][1] != '\0')
+				ft_error("wrong argument atof");
 		}
 		else
 		{
-			ft_str_is_numeric2(troll[eq->i]);
+			ft_str_is_numeric2(side[eq->i]);
 			eq->x[0] += (eq->tmp * eq->postequal * eq->signe);
 		}
 	}
 }
 
-void	normeparser2(t_eq *eq, char **troll, int j)
+void	normeparser2(t_eq *eq, char **side, int j)
 {
 	if (j == 2)
 	{
-		if ((troll[0][0] != '+' && troll[0][0] != '-') || troll[0][1] != '\0')
+		if ((side[0][0] != '+' && side[0][0] != '-') || side[0][1] != '\0')
 			ft_error("wrong arguments");
-		if (troll[0][0] == '+')
+		if (side[0][0] == '+')
 			eq->signe = 1;
-		if (troll[0][0] == '-')
+		if (side[0][0] == '-')
 			eq->signe = -1;
-		if (((eq->tmp = ft_atof(troll[1])) == 0.000000))
+		if (((eq->tmp = ft_atof(side[1])) == 0.000000))
 		{
-			if (troll[1][0] != '0' || troll[1][1] != '\0')
-				ft_error("wrong arguments");
+			if (side[1][0] != '0' || side[1][1] != '\0')
+				ft_error("wrong argument atof");
 		}
 		else
 		{
-			ft_str_is_numeric2(troll[1]);
+			ft_str_is_numeric2(side[1]);
 			eq->x[0] += (eq->tmp * eq->postequal * eq->signe);
 		}
 	}
 }
 
-void	normeparser3(t_eq *eq, char **troll)
+void	normeparser3(t_eq *eq, char **side)
 {
-	if ((troll[eq->i][0] != '+' && troll[eq->i][0] != '-')
-	|| troll[eq->i][1] != '\0')
+	if ((side[eq->i][0] != '+' && side[eq->i][0] != '-')
+	|| side[eq->i][1] != '\0')
 		ft_error("wrong arguments 1");
-	if (troll[eq->i][0] == '+')
+	if (side[eq->i][0] == '+')
 		eq->signe = 1;
-	if (troll[eq->i][0] == '-')
+	if (side[eq->i][0] == '-')
 		eq->signe = -1;
-	if (troll[eq->i][0] == '0')
+	if (side[eq->i][0] == '0')
 		eq->test++;
 }
 
-void	normeparser4(t_eq *eq, char **troll)
+void	normeparser4(t_eq *eq, char **side)
 {
-	if (troll[eq->i][0] == '-' || troll[eq->i][0] == '+')
+	if (side[eq->i][0] == '-' || side[eq->i][0] == '+')
 	{
 		eq->x[0] += (eq->tmp * eq->postequal * eq->signe);
 		eq->test = 4;
@@ -75,21 +75,21 @@ void	normeparser4(t_eq *eq, char **troll)
 	}
 	else
 	{
-		if (troll[eq->i][0] == '\0')
+		if (side[eq->i][0] == '\0')
 			ft_error("wrong arguments 4");
-		if (troll[eq->i][0] != '*' || troll[eq->i][1] != '\0')
+		if (side[eq->i][0] != '*' || side[eq->i][1] != '\0')
 			ft_error("wrong arguments 5");
 		eq->test++;
 		eq->i++;
 	}
 }
 
-void	normeparser5(t_eq *eq, char **troll)
+void	normeparser5(t_eq *eq, char **side)
 {
-	if (troll[eq->i][0] != 'X' && troll[eq->i][1] != '^')
+	if (side[eq->i][0] != 'X' && side[eq->i][1] != '^')
 		ft_error("wrong arguments 6");
-	if (((eq->tmpdeg = ft_atoi(&troll[eq->i][2])) == 0) &&
-	troll[eq->i][2] != '0')
+	if (((eq->tmpdeg = ft_atoi(&side[eq->i][2])) == 0) &&
+	side[eq->i][2] != '0')
 		ft_error("wrong arguments 7");
 	if (eq->tmpdeg < 0)
 		ft_error("wrong arguments 8");
