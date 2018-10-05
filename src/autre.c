@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "computor.h"
+#include <stdio.h>
 
 void		affichagesuite3(t_eq *eq)
 {
@@ -86,7 +87,10 @@ void		affdouble(double data)
 {
 	int		valeur;
 
-	valeur = (int)((data + 0.00000005 - (double)((int)data)) * 1000000);
+	if (data > 0)
+		valeur = (int)((data + 0.00000005 - (double)((int)data)) * 1000000);
+	else
+		valeur = (int)((data - (double)((int)data)) * 1000000);
 	if (data < 0)
 	{
 		ft_putchar('-');

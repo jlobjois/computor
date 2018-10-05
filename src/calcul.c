@@ -45,6 +45,9 @@ void	affichage2(t_eq *eq)
 		eq->i++;
 	}
 	ft_putstr("= 0\n");
+	ft_putstr("delta = ");
+	affdouble(eq->delta);
+	write(1, "\n", 1);
 	affichagesuite(eq);
 }
 
