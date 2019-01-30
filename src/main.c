@@ -12,8 +12,12 @@
 
 #include "computor.h"
 
-void	ft_error(char *str)
+void	ft_error(char *str, t_eq *eq)
 {
+	if (eq->x != NULL)
+		free(eq->x);
+	if (eq->deg != NULL)
+		free(eq->deg);
 	ft_putendl(str);
 	exit(0);
 }
@@ -25,7 +29,7 @@ void	norme(t_eq *eq, char **side0)
 		if (side0[eq->max0][0] == 'X')
 		{
 			if (side0[eq->max0][1] != '^')
-				ft_error("wrong argument after X");
+				ft_error("wrong argument after X", eq);
 			eq->nbx++;
 		}
 		eq->max0++;
@@ -39,7 +43,7 @@ void	norme1(t_eq *eq, char **side1)
 		if (side1[eq->max1][0] == 'X')
 		{
 			if (side1[eq->max1][1] != '^')
-				ft_error("wrong argument after X");
+				ft_error("wrong argument after X", eq);
 			eq->nbx++;
 		}
 		eq->max1++;
@@ -67,23 +71,24 @@ int		main(int argc, char **argv)
 	char **side0;
 	char **side1;
 
+	(void)argc;
 	ft_bzero(&eq, sizeof(eq));
 	if (argc != 2)
-		ft_error("wrong parameters");
+		ft_error("wrong parameters", &eq);
 	if (!(side = ft_strsplit(argv[1], '=')))
-		ft_error("error while strsplit");
+		ft_error("error while strsplit", &eq);
 	if (!side[0] || !side[1])
-		ft_error("side[0] and side[1] do not exist");
+		ft_error("side[0] and side[1] do not exist", &eq);
 	if (side[2] != NULL)
-		ft_error("less equals pls");
+		ft_error("less equals pls", &eq);
 	side0 = ft_strsplit(side[0], ' ');
 	side1 = ft_strsplit(side[1], ' ');
 	norme(&eq, side0);
 	norme1(&eq, side1);
 	if (!(eq.x = malloc((sizeof(double)) * (eq.nbx + 1))))
-		ft_error("malloc error");
+		ft_error("malloc error", &eq);
 	if (!(eq.deg = malloc((sizeof(int)) * (eq.nbx + 1))))
-		ft_error("malloc error");
+		ft_error("malloc error", &eq);
 	norme2(&eq, side0, side1);
 	return (0);
 }

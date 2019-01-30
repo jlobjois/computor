@@ -12,7 +12,7 @@
 
 #include "computor.h"
 
-void	ft_str_is_numeric2(char *str)
+void	ft_str_is_numeric2(char *str, t_eq *eq)
 {
 	int i;
 	int test;
@@ -20,25 +20,25 @@ void	ft_str_is_numeric2(char *str)
 	test = 0;
 	i = -1;
 	if (str[0] == '.')
-		ft_error("wrong number");
+		ft_error("wrong number", eq);
 	while (str[++i])
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
 		{
 			if (str[i] != '.')
-				ft_error("wrong number");
+				ft_error("wrong number", eq);
 			else
 				test++;
 		}
 	}
 	if (test > 1)
-		ft_error("wrong number");
+		ft_error("wrong number", eq);
 }
 
 void	parserfin(t_eq *eq)
 {
 	if (eq->test != 4)
-		ft_error("wrong arguments");
+		ft_error("wrong arguments", eq);
 	eq->test = 0;
 }
 
@@ -68,7 +68,7 @@ void	parsersuite(t_eq *eq, char **side, int j)
 	{
 		if ((side[eq->i][0] != '+' && side[eq->i][0] != '-')
 		|| side[eq->i][1] != '\0')
-			ft_error("wrong arguments 2");
+			ft_error("wrong arguments 2", eq);
 		if (side[eq->i][0] == '+')
 			eq->signe = 1;
 		if (side[eq->i][0] == '-')
@@ -80,9 +80,9 @@ void	parsersuite(t_eq *eq, char **side, int j)
 	}
 	if (eq->test == 1)
 	{
-		if ((eq->tmp = ft_atof(side[eq->i])) == 0.0)
-			ft_error("wrong arguments 3");
-		ft_str_is_numeric2(side[eq->i]);
+		if ((eq->tmp = ft_atof(side[eq->i], eq)) == 0.0)
+			ft_error("wrong arguments 3", eq);
+		ft_str_is_numeric2(side[eq->i], eq);
 		eq->test++;
 		eq->i++;
 	}
@@ -103,7 +103,7 @@ void	parser(t_eq *eq, char **side, int j)
 		{
 			if (eq->i == 0 && eq->passage < 1)
 			{
-				if (((eq->tmp = ft_atof(side[eq->i])) == 0.000000))
+				if (((eq->tmp = ft_atof(side[eq->i], eq)) == 0.000000))
 				{
 					normeparser3(eq, side);
 					eq->test++;

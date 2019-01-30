@@ -12,10 +12,10 @@
 
 #include "computor.h"
 
-void	alwaystrue(void)
+void	alwaystrue(t_eq *eq)
 {
 	ft_putstr("Reduced form: 0 = 0\n");
-	ft_error("Always true");
+	ft_error("Always true", eq);
 }
 
 void	alwaysfalse(t_eq *eq)
@@ -27,7 +27,7 @@ void	alwaysfalse(t_eq *eq)
 		write(1, " * X^0 ", 7);
 	}
 	ft_putstr("= 0\n");
-	ft_error("Always false");
+	ft_error("Always false", eq);
 }
 
 void	xzero(t_eq *eq)
@@ -45,28 +45,18 @@ void	xzero(t_eq *eq)
 		eq->j--;
 	}
 	ft_putstr("= 0\n");
-	ft_error("The solution is:\nX = 0");
+	ft_error("The solution is:\nX = 0", eq);
 }
 
 void	calcul1(t_eq *eq)
 {
 	ft_putstr("Reduced form: ");
-	while (eq->j != 0)
+	eq->i = 0;
+	while (eq->i <= eq->nbx)
 	{
-		if (eq->x[eq->j] != 0)
-		{
-			if (eq->x[1] != 0)
-			{
-				ft_putnbr(eq->x[1]);
-				write(1, " * X^1 ", 7);
-			}
-			if (eq->x[0] != 0)
-			{
-				ft_putnbr(eq->x[0]);
-				write(1, " * X^0 ", 7);
-			}
-		}
-		eq->j--;
+		if (eq->x[eq->i] != 0)
+			norme5(eq);
+		eq->i++;
 	}
 	ft_putstr("= 0\n");
 	eq->solr = (-eq->x[0]) / eq->x[1];
@@ -89,6 +79,7 @@ void	calcul2(t_eq *eq)
 		ft_sqrt(eq->delta)) / (2 * eq->x[eq->deg2]));
 		eq->sol2 = (((-eq->x[eq->deg1]) -
 		ft_sqrt(eq->delta)) / (2 * eq->x[eq->deg2]));
+		printf("sol2%f\n", eq->sol2);
 	}
 	if (eq->delta == 0)
 		eq->sol1 = (-eq->x[eq->deg1]) / (2 * eq->x[eq->deg2]);

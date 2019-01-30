@@ -54,25 +54,25 @@ void	affichage2(t_eq *eq)
 void	norme7(t_eq *eq)
 {
 	if ((eq->j == 1 && (eq->deg[eq->j] == 1 && eq->x[eq->j] != 0))
-	&& (eq->x[eq->j - 1] != 0))
+		&& (eq->x[eq->j - 1] != 0))
 		calcul1(eq);
 	else if ((eq->j == 1 && (eq->deg[eq->j] == 1 && eq->x[eq->j] != 0))
-	&& (eq->x[eq->j - 1] == 0))
+		&& (eq->x[eq->j - 1] == 0))
 		xzero(eq);
 	else if ((eq->j == 2 && (eq->deg[eq->j] == 2 && eq->x[eq->j] == 0))
-	&& (eq->x[eq->j - 1] == 0 && eq->x[eq->j - 2] == 0))
-		alwaystrue();
+		&& (eq->x[eq->j - 1] == 0 && eq->x[eq->j - 2] == 0))
+		alwaystrue(eq);
 	else if ((eq->j == 2 && (eq->deg[eq->j] == 2 && eq->x[eq->j] == 0))
-	&& (eq->x[eq->j - 1] != 0 && eq->x[eq->j - 2] != 0))
+		&& (eq->x[eq->j - 1] != 0 && eq->x[eq->j - 2] != 0))
 		calcul1(eq);
 	else if ((eq->j == 2 && (eq->deg[eq->j] == 2 && eq->x[eq->j] == 0))
-	&& (eq->x[eq->j - 1] != 0 || eq->x[eq->j - 2] != 0))
+		&& (eq->x[eq->j - 1] != 0 || eq->x[eq->j - 2] != 0))
 		alwaysfalse(eq);
 	else if ((eq->j == 2 && (eq->deg[eq->j] == 2 && eq->x[eq->j] != 0))
-	&& (eq->x[eq->j - 1] == 0 && eq->x[eq->j - 2] == 0))
+		&& (eq->x[eq->j - 1] == 0 && eq->x[eq->j - 2] == 0))
 		xzero(eq);
 	else if ((eq->j == 2 && (eq->deg[eq->j] == 2 && eq->x[eq->j] != 0))
-	&& (eq->x[eq->j - 1] != 0 || eq->x[eq->j - 2] != 0))
+		&& (eq->x[eq->j - 1] != 0 || eq->x[eq->j - 2] != 0))
 		calcul2(eq);
 	else
 		affichage3(eq);
@@ -81,27 +81,27 @@ void	norme7(t_eq *eq)
 void	norme6(t_eq *eq)
 {
 	if (eq->j == 0 && eq->x[eq->j] == 0)
-		alwaystrue();
+		alwaystrue(eq);
 	else if (eq->j == 0 && eq->x[eq->j] != 0)
 		alwaysfalse(eq);
 	else if ((eq->j == 1 && (eq->deg[eq->j] == 2 && eq->x[eq->j] == 0))
-	&& (eq->x[eq->j - 1] == 0))
-		alwaystrue();
+		&& (eq->x[eq->j - 1] == 0))
+		alwaystrue(eq);
 	else if ((eq->j == 1 && (eq->deg[eq->j] == 2 && eq->x[eq->j] == 0))
-	&& (eq->x[eq->j - 1] != 0))
+		&& (eq->x[eq->j - 1] != 0))
 		alwaysfalse(eq);
 	else if ((eq->j == 1 && (eq->deg[eq->j] == 2 && eq->x[eq->j] != 0))
-	&& (eq->x[eq->j - 1] == 0))
+		&& (eq->x[eq->j - 1] == 0))
 		xzero(eq);
 	else if ((eq->j == 1 && (eq->deg[eq->j] == 2 && eq->x[eq->j] != 0))
-	&& (eq->x[eq->j - 1] != 0))
+		&& (eq->x[eq->j - 1] != 0))
 		calcul2(eq);
 	else if ((eq->j == 1 && (eq->deg[eq->j] == 1 && eq->x[eq->j] == 0))
-	&& (eq->x[eq->j - 1] != 0))
+		&& (eq->x[eq->j - 1] != 0))
 		alwaysfalse(eq);
 	else if ((eq->j == 1 && (eq->deg[eq->j] == 1 && eq->x[eq->j] == 0))
-	&& (eq->x[eq->j - 1] == 0))
-		alwaystrue();
+		&& (eq->x[eq->j - 1] == 0))
+		alwaystrue(eq);
 	else
 		norme7(eq);
 }
@@ -110,23 +110,29 @@ void	calcul(t_eq *eq)
 {
 	eq->j = eq->nbx;
 	eq->test = 0;
+	while (eq->j >= 0)
+	{
+		printf("eq->deg[eq->j] %d eq->x[eq->j] %f \n", eq->deg[eq->j], eq->x[eq->j]);
+		eq->j--;
+	}
+	eq->j = eq->nbx;
 	while (eq->deg[eq->j] == 0 && eq->x[eq->j] == 0)
 		eq->j--;
 	while (eq->deg[eq->j] > 2 && eq->x[eq->j] == 0)
 		eq->j--;
 	if (eq->j == -1)
-		alwaystrue();
+		alwaystrue(eq);
 	if (eq->j > 2)
 		affichage3(eq);
 	eq->j = eq->nbx;
 	while (eq->deg[eq->j] == 0 && eq->x[eq->j] == 0)
 		eq->j--;
 	if ((eq->j == 0 && (eq->deg[eq->j] == 2 && eq->x[eq->j] == 0)))
-		alwaystrue();
+		alwaystrue(eq);
 	else if ((eq->j == 0 && (eq->deg[eq->j] == 2 && eq->x[eq->j] != 0)))
 		xzero(eq);
 	else if ((eq->j == 0 && (eq->deg[eq->j] == 1 && eq->x[eq->j] == 0)))
-		alwaystrue();
+		alwaystrue(eq);
 	else if ((eq->j == 0 && (eq->deg[eq->j] == 1 && eq->x[eq->j] != 0)))
 		xzero(eq);
 	else

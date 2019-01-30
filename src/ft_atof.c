@@ -12,7 +12,7 @@
 
 #include "computor.h"
 
-double			suite(int i, char *str, double tmp)
+double			suite(int i, char *str, double tmp, t_eq *eq)
 {
 	double k;
 
@@ -25,11 +25,11 @@ double			suite(int i, char *str, double tmp)
 	}
 	if (str[i])
 		if (str[i] == '.')
-			ft_error("not a good double");
+			ft_error("not a good double", eq);
 	return (tmp);
 }
 
-static double	ft_calcul(int i, int neg, char *str)
+static double	ft_calcul(int i, int neg, char *str, t_eq *eq)
 {
 	double	tmp;
 	int		n;
@@ -47,13 +47,13 @@ static double	ft_calcul(int i, int neg, char *str)
 	if (str[i] == '.')
 	{
 		i++;
-		tmp = suite(i, str, tmp);
+		tmp = suite(i, str, tmp, eq);
 	}
 	tmp *= neg;
 	return (tmp);
 }
 
-double			ft_atof(char const *nptr)
+double			ft_atof(char const *nptr, t_eq *eq)
 {
 	int i;
 	int neg;
@@ -69,11 +69,11 @@ double			ft_atof(char const *nptr)
 	{
 		neg = -1;
 		i++;
-		return (ft_calcul(i, neg, (char *)nptr));
+		return (ft_calcul(i, neg, (char *)nptr, eq));
 	}
 	else if (nptr[i] == '+')
-		return (ft_calcul(++i, neg, (char *)nptr));
-	return (ft_calcul(i, neg, (char *)nptr));
+		return (ft_calcul(++i, neg, (char *)nptr, eq));
+	return (ft_calcul(i, neg, (char *)nptr, eq));
 }
 
 void			normeparser6(t_eq *eq)

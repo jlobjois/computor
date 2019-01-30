@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "computor.h"
-#include <stdio.h>
 
 void		affichagesuite3(t_eq *eq)
 {
@@ -23,7 +22,8 @@ void		affichagesuite3(t_eq *eq)
 	ft_putstr("Polynomial degree: ");
 	affdouble(eq->deg[i]);
 	write(1, "\n", 1);
-	ft_error("The polynomial degree is stricly greater than 2, I can't solve.");
+	ft_putstr("The polynomial degree");
+	ft_error(" is stricly greater than 2, I can't solve.", eq);
 }
 
 void		norme4(t_eq *eq)
@@ -44,6 +44,7 @@ void		affichage3(t_eq *eq)
 	eq->i = 0;
 	while (eq->i <= eq->nbx)
 	{
+		printf("eq->x[eq->i]%f\n", eq->x[eq->i]);
 		if (eq->x[eq->i] != 0)
 		{
 			if (eq->x[eq->i] < 0)
@@ -87,10 +88,7 @@ void		affdouble(double data)
 {
 	int		valeur;
 
-	if (data > 0)
-		valeur = (int)((data + 0.00000005 - (double)((int)data)) * 1000000);
-	else
-		valeur = (int)((data - (double)((int)data)) * 1000000);
+	valeur = (int)((data - (double)((int)data)) * 1000000);
 	if (data < 0)
 	{
 		ft_putchar('-');
