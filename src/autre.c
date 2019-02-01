@@ -44,7 +44,6 @@ void		affichage3(t_eq *eq)
 	eq->i = 0;
 	while (eq->i <= eq->nbx)
 	{
-		printf("eq->x[eq->i]%f\n", eq->x[eq->i]);
 		if (eq->x[eq->i] != 0)
 		{
 			if (eq->x[eq->i] < 0)

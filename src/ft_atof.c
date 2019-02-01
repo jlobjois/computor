@@ -80,7 +80,7 @@ void			normeparser6(t_eq *eq)
 {
 	eq->decalage = 0;
 	while (((eq->j + eq->decalage) < eq->nbx)
-	&& (eq->deg[eq->j + eq->decalage] != 0))
+		&& (eq->deg[eq->j + eq->decalage] != 0))
 		eq->decalage++;
 	while (eq->decalage > 0)
 	{

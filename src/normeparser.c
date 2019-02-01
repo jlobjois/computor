@@ -55,7 +55,7 @@ void	normeparser2(t_eq *eq, char **side, int j)
 void	normeparser3(t_eq *eq, char **side)
 {
 	if ((side[eq->i][0] != '+' && side[eq->i][0] != '-')
-	|| side[eq->i][1] != '\0')
+		|| side[eq->i][1] != '\0')
 		ft_error("wrong arguments 1", eq);
 	if (side[eq->i][0] == '+')
 		eq->signe = 1;
@@ -88,8 +88,8 @@ void	normeparser5(t_eq *eq, char **side)
 {
 	if (side[eq->i][0] != 'X' && side[eq->i][1] != '^')
 		ft_error("wrong arguments 6", eq);
-	if (((eq->tmpdeg = ft_atoi(&side[eq->i][2])) == 0) &&
-	side[eq->i][2] != '0')
+	if (((eq->tmpdeg = ft_atoi(&side[eq->i][2])) == 0)
+		&& side[eq->i][2] != '0')
 		ft_error("wrong arguments 7", eq);
 	if (eq->tmpdeg < 0)
 		ft_error("wrong arguments 8", eq);
@@ -99,8 +99,8 @@ void	normeparser5(t_eq *eq, char **side)
 	else
 	{
 		while (eq->j > 1 && ((eq->tmpdeg < eq->j)
-		|| eq->tmpdeg <= eq->deg[eq->j - 1]
-		|| (eq->deg[eq->j - 1] == 0 && eq->deg[eq->j] == 0)))
+			|| eq->tmpdeg <= eq->deg[eq->j - 1]
+				|| (eq->deg[eq->j - 1] == 0 && eq->deg[eq->j] == 0)))
 			eq->j--;
 	}
 	if (eq->tmpdeg == eq->deg[eq->j])

@@ -38,7 +38,7 @@ void	anditsover(t_eq *eq)
 	ft_putstr("Discriminant is strictly negative, ");
 	ft_putstr("the two solutions are:\n");
 	affdouble(eq->solr);
-	ft_putstr(" + ");
+	ft_putstr(" - ");
 	affdouble(eq->sol1i);
 	ft_putstr("i\n");
 	affdouble(eq->solr);
@@ -50,7 +50,7 @@ void	anditsover(t_eq *eq)
 void	affichagefin(t_eq *eq)
 {
 	if ((eq->deg[2] == 2 && eq->x[2] != 0)
-	|| (eq->deg[1] == 2 && eq->x[1] != 0))
+		|| (eq->deg[1] == 2 && eq->x[1] != 0))
 	{
 		if (eq->delta > 0)
 		{

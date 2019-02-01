@@ -22,36 +22,32 @@ void	ft_error(char *str, t_eq *eq)
 	exit(0);
 }
 
-void	norme(t_eq *eq, char **side0)
+int		get_max(t_eq *eq, char **side)
 {
-	while (side0[eq->max0])
-	{
-		if (side0[eq->max0][0] == 'X')
-		{
-			if (side0[eq->max0][1] != '^')
-				ft_error("wrong argument after X", eq);
-			eq->nbx++;
-		}
-		eq->max0++;
-	}
-}
+	int	max;
 
-void	norme1(t_eq *eq, char **side1)
-{
-	while (side1[eq->max1])
+	max = 0;
+	while (side[max])
 	{
-		if (side1[eq->max1][0] == 'X')
+		if (side[max][0] == 'X')
 		{
-			if (side1[eq->max1][1] != '^')
+			if (side[max][1] != '^')
 				ft_error("wrong argument after X", eq);
 			eq->nbx++;
 		}
-		eq->max1++;
+		max++;
 	}
+	return (max);
 }
 
 void	norme2(t_eq *eq, char **side0, char **side1)
 {
+	if (eq->max0 < 1 || eq->max1 < 1)
+		ft_error("size problem", eq);
+	if (!(eq->x = malloc((sizeof(double)) * (eq->nbx + 1))))
+		ft_error("malloc error", eq);
+	if (!(eq->deg = malloc((sizeof(int)) * (eq->nbx + 1))))
+		ft_error("malloc error", eq);
 	ft_bzero(eq->x, sizeof(double) * (eq->nbx + 1));
 	ft_bzero(eq->deg, sizeof(int) * (eq->nbx + 1));
 	eq->postequal = 1;
@@ -71,7 +67,6 @@ int		main(int argc, char **argv)
 	char **side0;
 	char **side1;
 
-	(void)argc;
 	ft_bzero(&eq, sizeof(eq));
 	if (argc != 2)
 		ft_error("wrong parameters", &eq);
@@ -83,12 +78,8 @@ int		main(int argc, char **argv)
 		ft_error("less equals pls", &eq);
 	side0 = ft_strsplit(side[0], ' ');
 	side1 = ft_strsplit(side[1], ' ');
-	norme(&eq, side0);
-	norme1(&eq, side1);
-	if (!(eq.x = malloc((sizeof(double)) * (eq.nbx + 1))))
-		ft_error("malloc error", &eq);
-	if (!(eq.deg = malloc((sizeof(int)) * (eq.nbx + 1))))
-		ft_error("malloc error", &eq);
+	eq.max0 = get_max(&eq, side0);
+	eq.max1 = get_max(&eq, side1);
 	norme2(&eq, side0, side1);
 	return (0);
 }

@@ -75,13 +75,12 @@ void	parsersuite(t_eq *eq, char **side, int j)
 			eq->signe = -1;
 		eq->test++;
 		eq->i++;
-		if (side[eq->i][0] == '\0')
+		if (eq->i == j || side[eq->i][0] == '\0')
 			parserfin(eq);
 	}
 	if (eq->test == 1)
 	{
-		if ((eq->tmp = ft_atof(side[eq->i], eq)) == 0.0)
-			ft_error("wrong arguments 3", eq);
+		eq->tmp = ft_atof(side[eq->i], eq);
 		ft_str_is_numeric2(side[eq->i], eq);
 		eq->test++;
 		eq->i++;

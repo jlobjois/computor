@@ -71,15 +71,14 @@ void	calcul2(t_eq *eq)
 		eq->deg2++;
 	while (eq->deg[eq->deg1] != 1 && eq->deg1 < 2)
 		eq->deg1++;
-	eq->delta = (eq->x[eq->deg1] * eq->x[eq->deg1]) -
-	(4 * eq->x[eq->deg2] * eq->x[0]);
+	eq->delta = (eq->x[eq->deg1] * eq->x[eq->deg1])
+		- (4 * eq->x[eq->deg2] * eq->x[0]);
 	if (eq->delta > 0)
 	{
-		eq->sol1 = (((-eq->x[eq->deg1]) +
-		ft_sqrt(eq->delta)) / (2 * eq->x[eq->deg2]));
-		eq->sol2 = (((-eq->x[eq->deg1]) -
-		ft_sqrt(eq->delta)) / (2 * eq->x[eq->deg2]));
-		printf("sol2%f\n", eq->sol2);
+		eq->sol1 = (((-eq->x[eq->deg1])
+		+ ft_sqrt(eq->delta)) / (2 * eq->x[eq->deg2]));
+		eq->sol2 = (((-eq->x[eq->deg1])
+		- ft_sqrt(eq->delta)) / (2 * eq->x[eq->deg2]));
 	}
 	if (eq->delta == 0)
 		eq->sol1 = (-eq->x[eq->deg1]) / (2 * eq->x[eq->deg2]);

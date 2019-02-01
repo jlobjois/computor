@@ -110,12 +110,6 @@ void	calcul(t_eq *eq)
 {
 	eq->j = eq->nbx;
 	eq->test = 0;
-	while (eq->j >= 0)
-	{
-		printf("eq->deg[eq->j] %d eq->x[eq->j] %f \n", eq->deg[eq->j], eq->x[eq->j]);
-		eq->j--;
-	}
-	eq->j = eq->nbx;
 	while (eq->deg[eq->j] == 0 && eq->x[eq->j] == 0)
 		eq->j--;
 	while (eq->deg[eq->j] > 2 && eq->x[eq->j] == 0)

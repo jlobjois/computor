@@ -34,7 +34,7 @@ HEAD_DIR = -I ./include -I ./libft
 
 LIB = -L ./libft -lft
 
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
