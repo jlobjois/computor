@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normeparser.c                                      :+:      :+:    :+:   */
+/*   parserend.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "computor.h"
 
-void	normeparser1(t_eq *eq, char **side, int j)
+void	firstcheck(t_eq *eq, char **side, int j)
 {
 	if (j == 1)
 	{
@@ -29,7 +29,7 @@ void	normeparser1(t_eq *eq, char **side, int j)
 	}
 }
 
-void	normeparser2(t_eq *eq, char **side, int j)
+void	secondcheck(t_eq *eq, char **side, int j)
 {
 	if (j == 2)
 	{
@@ -52,7 +52,7 @@ void	normeparser2(t_eq *eq, char **side, int j)
 	}
 }
 
-void	normeparser3(t_eq *eq, char **side)
+void	thirdcheck(t_eq *eq, char **side)
 {
 	if ((side[eq->i][0] != '+' && side[eq->i][0] != '-')
 		|| side[eq->i][1] != '\0')
@@ -65,7 +65,7 @@ void	normeparser3(t_eq *eq, char **side)
 		eq->test++;
 }
 
-void	normeparser4(t_eq *eq, char **side)
+void	fourthcheck(t_eq *eq, char **side)
 {
 	if (side[eq->i][0] == '-' || side[eq->i][0] == '+')
 	{
@@ -84,7 +84,7 @@ void	normeparser4(t_eq *eq, char **side)
 	}
 }
 
-void	normeparser5(t_eq *eq, char **side)
+void	fifthcheck(t_eq *eq, char **side)
 {
 	if (side[eq->i][0] != 'X' && side[eq->i][1] != '^')
 		ft_error("wrong arguments 6", eq);
@@ -106,5 +106,5 @@ void	normeparser5(t_eq *eq, char **side)
 	if (eq->tmpdeg == eq->deg[eq->j])
 		eq->x[eq->j] += (eq->tmp * eq->postequal * eq->signe);
 	else
-		normeparser6(eq);
+		insertpowervalue(eq);
 }

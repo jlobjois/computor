@@ -25,7 +25,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 size_t			ft_strlen(const char *str);
-int				ft_atoi(const char *nptr);
+long			ft_atoi(const char *nptr);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strstr(const char *big, const char *little);
@@ -73,7 +73,7 @@ void			ft_putstr(char const *s);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putendl(char const *s);
 void			ft_putnbr_fd(int nb, int fd);
-void			ft_putnbr(int nb);
+void			ft_putnbr(long nb);
 int				ft_str_is_alpha(char *str);
 int				ft_str_is_lowercase(char *str);
 int				ft_str_is_numeric(char *str);

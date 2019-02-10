@@ -24,8 +24,8 @@ static size_t		ft_strlensize(const char *str, const char c)
 
 static void			ft_read_buff(int fd, t_gnl *gnl)
 {
-	while ((ft_strchr(gnl->stock[fd], '\n') == 0) &&
-	(gnl->read_buff = read(fd, gnl->buff, BUFF_SIZE)) > 0)
+	while ((ft_strchr(gnl->stock[fd], '\n') == 0)
+		&& (gnl->read_buff = read(fd, gnl->buff, BUFF_SIZE)) > 0)
 	{
 		gnl->buff[gnl->read_buff] = '\0';
 		gnl->tmp = gnl->stock[fd];

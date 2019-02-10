@@ -12,7 +12,7 @@
 
 #include "computor.h"
 
-void	norme5(t_eq *eq)
+void	writeone(t_eq *eq)
 {
 	if (eq->x[eq->i] < 0)
 	{
@@ -34,28 +34,28 @@ void	norme5(t_eq *eq)
 	}
 }
 
-void	affichage2(t_eq *eq)
+void	reducedform(t_eq *eq)
 {
 	ft_putstr("Reduced form: ");
 	eq->i = 0;
 	while (eq->i <= eq->nbx)
 	{
 		if (eq->x[eq->i] != 0)
-			norme5(eq);
+			writeone(eq);
 		eq->i++;
 	}
 	ft_putstr("= 0\n");
 	ft_putstr("delta = ");
 	affdouble(eq->delta);
 	write(1, "\n", 1);
-	affichagesuite(eq);
+	writepolynomial(eq);
 }
 
-void	norme7(t_eq *eq)
+void	lastcases(t_eq *eq)
 {
 	if ((eq->j == 1 && (eq->deg[eq->j] == 1 && eq->x[eq->j] != 0))
 		&& (eq->x[eq->j - 1] != 0))
-		calcul1(eq);
+		onesolution(eq);
 	else if ((eq->j == 1 && (eq->deg[eq->j] == 1 && eq->x[eq->j] != 0))
 		&& (eq->x[eq->j - 1] == 0))
 		xzero(eq);
@@ -64,7 +64,7 @@ void	norme7(t_eq *eq)
 		alwaystrue(eq);
 	else if ((eq->j == 2 && (eq->deg[eq->j] == 2 && eq->x[eq->j] == 0))
 		&& (eq->x[eq->j - 1] != 0 && eq->x[eq->j - 2] != 0))
-		calcul1(eq);
+		onesolution(eq);
 	else if ((eq->j == 2 && (eq->deg[eq->j] == 2 && eq->x[eq->j] == 0))
 		&& (eq->x[eq->j - 1] != 0 || eq->x[eq->j - 2] != 0))
 		alwaysfalse(eq);
@@ -73,12 +73,12 @@ void	norme7(t_eq *eq)
 		xzero(eq);
 	else if ((eq->j == 2 && (eq->deg[eq->j] == 2 && eq->x[eq->j] != 0))
 		&& (eq->x[eq->j - 1] != 0 || eq->x[eq->j - 2] != 0))
-		calcul2(eq);
+		seconddegree(eq);
 	else
-		affichage3(eq);
+		morethantwo(eq);
 }
 
-void	norme6(t_eq *eq)
+void	othercases(t_eq *eq)
 {
 	if (eq->j == 0 && eq->x[eq->j] == 0)
 		alwaystrue(eq);
@@ -95,7 +95,7 @@ void	norme6(t_eq *eq)
 		xzero(eq);
 	else if ((eq->j == 1 && (eq->deg[eq->j] == 2 && eq->x[eq->j] != 0))
 		&& (eq->x[eq->j - 1] != 0))
-		calcul2(eq);
+		seconddegree(eq);
 	else if ((eq->j == 1 && (eq->deg[eq->j] == 1 && eq->x[eq->j] == 0))
 		&& (eq->x[eq->j - 1] != 0))
 		alwaysfalse(eq);
@@ -103,10 +103,10 @@ void	norme6(t_eq *eq)
 		&& (eq->x[eq->j - 1] == 0))
 		alwaystrue(eq);
 	else
-		norme7(eq);
+		lastcases(eq);
 }
 
-void	calcul(t_eq *eq)
+void	differentcases(t_eq *eq)
 {
 	eq->j = eq->nbx;
 	eq->test = 0;
@@ -117,7 +117,7 @@ void	calcul(t_eq *eq)
 	if (eq->j == -1)
 		alwaystrue(eq);
 	if (eq->j > 2)
-		affichage3(eq);
+		morethantwo(eq);
 	eq->j = eq->nbx;
 	while (eq->deg[eq->j] == 0 && eq->x[eq->j] == 0)
 		eq->j--;
@@ -130,5 +130,5 @@ void	calcul(t_eq *eq)
 	else if ((eq->j == 0 && (eq->deg[eq->j] == 1 && eq->x[eq->j] != 0)))
 		xzero(eq);
 	else
-		norme6(eq);
+		othercases(eq);
 }

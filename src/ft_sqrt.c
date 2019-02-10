@@ -47,7 +47,7 @@ void	anditsover(t_eq *eq)
 	ft_putstr("i\n");
 }
 
-void	affichagefin(t_eq *eq)
+void	differentdelta(t_eq *eq)
 {
 	if ((eq->deg[2] == 2 && eq->x[2] != 0)
 		|| (eq->deg[1] == 2 && eq->x[1] != 0))
@@ -72,7 +72,7 @@ void	affichagefin(t_eq *eq)
 	}
 }
 
-void	affichagesuite(t_eq *eq)
+void	writepolynomial(t_eq *eq)
 {
 	int i;
 
@@ -82,5 +82,5 @@ void	affichagesuite(t_eq *eq)
 	ft_putstr("Polynomial degree: ");
 	ft_putnbr(eq->deg[i]);
 	write(1, "\n", 1);
-	affichagefin(eq);
+	differentdelta(eq);
 }

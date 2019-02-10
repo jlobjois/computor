@@ -40,7 +40,7 @@ int		get_max(t_eq *eq, char **side)
 	return (max);
 }
 
-void	norme2(t_eq *eq, char **side0, char **side1)
+void	init(t_eq *eq, char **side0, char **side1)
 {
 	if (eq->max0 < 1 || eq->max1 < 1)
 		ft_error("size problem", eq);
@@ -57,7 +57,7 @@ void	norme2(t_eq *eq, char **side0, char **side1)
 	eq->passage = 0;
 	parser(eq, side1, eq->max1);
 	eq->j = 0;
-	calcul(eq);
+	differentcases(eq);
 }
 
 int		main(int argc, char **argv)
@@ -76,10 +76,14 @@ int		main(int argc, char **argv)
 		ft_error("side[0] and side[1] do not exist", &eq);
 	if (side[2] != NULL)
 		ft_error("less equals pls", &eq);
-	side0 = ft_strsplit(side[0], ' ');
-	side1 = ft_strsplit(side[1], ' ');
+	side0 = ft_strsplit2(side[0], ' ', &eq);
+	side1 = ft_strsplit2(side[1], ' ', &eq);
 	eq.max0 = get_max(&eq, side0);
 	eq.max1 = get_max(&eq, side1);
-	norme2(&eq, side0, side1);
+	init(&eq, side0, side1);
+	if (eq.x != NULL)
+		free(eq.x);
+	if (eq.deg != NULL)
+		free(eq.deg);
 	return (0);
 }

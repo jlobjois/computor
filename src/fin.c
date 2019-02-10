@@ -48,14 +48,14 @@ void	xzero(t_eq *eq)
 	ft_error("The solution is:\nX = 0", eq);
 }
 
-void	calcul1(t_eq *eq)
+void	onesolution(t_eq *eq)
 {
 	ft_putstr("Reduced form: ");
 	eq->i = 0;
 	while (eq->i <= eq->nbx)
 	{
 		if (eq->x[eq->i] != 0)
-			norme5(eq);
+			writeone(eq);
 		eq->i++;
 	}
 	ft_putstr("= 0\n");
@@ -65,7 +65,7 @@ void	calcul1(t_eq *eq)
 	write(1, "\n", 1);
 }
 
-void	calcul2(t_eq *eq)
+void	seconddegree(t_eq *eq)
 {
 	while (eq->deg[eq->deg2] != 2 && eq->deg2 < 3)
 		eq->deg2++;
@@ -88,5 +88,5 @@ void	calcul2(t_eq *eq)
 		eq->sol1i = (ft_sqrt(-eq->delta)) / (2 * eq->x[eq->deg2]);
 		eq->sol2i = (ft_sqrt(-eq->delta)) / (2 * eq->x[eq->deg2]);
 	}
-	affichage2(eq);
+	reducedform(eq);
 }

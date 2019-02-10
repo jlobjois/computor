@@ -47,10 +47,10 @@ void	parsersuite2(t_eq *eq, char **side, int j)
 	if (eq->i <= (j - 1))
 	{
 		if (eq->test == 2)
-			normeparser4(eq, side);
+			fourthcheck(eq, side);
 		if (eq->test == 3)
 		{
-			normeparser5(eq, side);
+			fifthcheck(eq, side);
 			eq->test++;
 		}
 	}
@@ -93,8 +93,8 @@ void	parser(t_eq *eq, char **side, int j)
 	eq->signe = 1;
 	if (j < 3)
 	{
-		normeparser1(eq, side, j);
-		normeparser2(eq, side, j);
+		firstcheck(eq, side, j);
+		secondcheck(eq, side, j);
 	}
 	else
 	{
@@ -104,7 +104,7 @@ void	parser(t_eq *eq, char **side, int j)
 			{
 				if (((eq->tmp = ft_atof(side[eq->i], eq)) == 0.000000))
 				{
-					normeparser3(eq, side);
+					thirdcheck(eq, side);
 					eq->test++;
 				}
 				else

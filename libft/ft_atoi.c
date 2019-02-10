@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-static int	ft_calcul(int i, int neg, char *str)
+static long	ft_calcul(int i, int neg, char *str)
 {
-	int tmp;
-	int n;
+	long tmp;
+	long n;
 
 	tmp = 0;
 	n = 0;
@@ -31,7 +31,7 @@ static int	ft_calcul(int i, int neg, char *str)
 	return (tmp);
 }
 
-int			ft_atoi(char const *nptr)
+long		ft_atoi(char const *nptr)
 {
 	int i;
 	int neg;

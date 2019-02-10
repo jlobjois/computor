@@ -20,7 +20,7 @@ HEADER_FILE =	computor.h		\
 
 SRC_FILE =	main.c		parser.c		ft_atof.c	\
 			ft_sqrt.c	calcul.c		fin.c		\
-			autre.c		normeparser.c\
+			autre.c		parserend.c		ft_strsplit2.c\
 
 SRC = $(SRC_FILE:%c=$(PATH_SRC)%c)
 
