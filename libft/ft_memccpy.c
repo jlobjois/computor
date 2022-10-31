@@ -22,10 +22,11 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 		((char *)dst)[i] = ((char *)src)[i];
 		if (((char *)src)[i] == c)
 		{
-			i++;
-			return (&dst[i]);
+			dst++;
+			return (dst);
 		}
 		i++;
+		dst++;
 	}
 	return (NULL);
 }

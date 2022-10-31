@@ -87,7 +87,7 @@ void		affdouble(double data)
 {
 	long		valeur;
 
-	valeur = (long)((data - (double)((long)data)) * 1000000);
+	valeur = (long)((data - ((double)(long)data)) * 1000000);
 	if (data < 0)
 	{
 		ft_putchar('-');
@@ -95,19 +95,22 @@ void		affdouble(double data)
 		valeur *= -1;
 	}
 	ft_putnbr((long)data);
-	ft_putchar('.');
-	if (valeur < 999)
-		suiteaff(valeur);
-	else if (valeur < 9999)
+	if (valeur != 0)
 	{
-		ft_putstr("00");
-		ft_putnbr(valeur);
+		ft_putchar('.');
+		if (valeur < 999)
+			suiteaff(valeur);
+		else if (valeur < 9999)
+		{
+			ft_putstr("00");
+			ft_putnbr(valeur);
+		}
+		else if (valeur < 99999)
+		{
+			ft_putstr("0");
+			ft_putnbr(valeur);
+		}
+		else
+			ft_putnbr(valeur);
 	}
-	else if (valeur < 99999)
-	{
-		ft_putstr("0");
-		ft_putnbr(valeur);
-	}
-	else
-		ft_putnbr(valeur);
 }

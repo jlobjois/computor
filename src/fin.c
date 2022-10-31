@@ -15,6 +15,7 @@
 void	alwaystrue(t_eq *eq)
 {
 	ft_putstr("Reduced form: 0 = 0\n");
+	writepolynomial(eq);
 	ft_error("Always true", eq);
 }
 
@@ -27,6 +28,7 @@ void	alwaysfalse(t_eq *eq)
 		write(1, " * X^0 ", 7);
 	}
 	ft_putstr("= 0\n");
+	writepolynomial(eq);
 	ft_error("Always false", eq);
 }
 
@@ -45,6 +47,7 @@ void	xzero(t_eq *eq)
 		eq->j--;
 	}
 	ft_putstr("= 0\n");
+	writepolynomial(eq);
 	ft_error("The solution is:\nX = 0", eq);
 }
 
@@ -59,6 +62,7 @@ void	onesolution(t_eq *eq)
 		eq->i++;
 	}
 	ft_putstr("= 0\n");
+	writepolynomial(eq);
 	eq->solr = (-eq->x[0]) / eq->x[1];
 	ft_putstr("The solution is:\n");
 	affdouble(eq->solr);

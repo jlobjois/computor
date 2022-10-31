@@ -49,6 +49,8 @@ static double	ft_calcul(int i, int neg, char *str, t_eq *eq)
 		i++;
 		tmp = suite(i, str, tmp, eq);
 	}
+	else if (str[i] != '\0')
+		ft_error("not a good double", eq);
 	tmp *= neg;
 	return (tmp);
 }
