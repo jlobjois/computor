@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 23:48:45 by jlobjois          #+#    #+#             */
-/*   Updated: 2022/11/01 19:44:04 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 22:04:14 by vgeorgak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,12 @@ static size_t	get_n_words(char const *s, char c)
 	return (n);
 }
 
-char	**ft_strsplit(char const *s, char c)
+static char	**ft_looping(char **ptr, char const *s, char c)
 {
-	char	**ptr;
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	ptr = (char **)malloc(sizeof(*ptr) * (get_n_words(s, c) + 1));
-	if (!ptr)
-		return (NULL);
 	while (i < get_n_words(s, c))
 	{
 		ptr[i] = (char *)malloc(sizeof(char) * (get_n_chars(s, c, i + 1) + 1));
@@ -106,5 +100,21 @@ char	**ft_strsplit(char const *s, char c)
 		i++;
 	}
 	ptr[i] = 0;
+	return (ptr);
+}
+
+char	**ft_strsplit(char const *s, char c)
+{
+	char	**ptr;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	ptr = (char **)malloc(sizeof(*ptr) * (get_n_words(s, c) + 1));
+	if (!ptr)
+		return (NULL);
+	ptr = ft_looping(ptr, s, c);
 	return (ptr);
 }
