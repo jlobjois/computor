@@ -12,7 +12,7 @@
 
 #include "computor.h"
 
-void 	writepowerovertwo(t_eq *eq)
+void	writepowerovertwo(t_eq *eq)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ void 	writepowerovertwo(t_eq *eq)
 	ft_error(" is stricly greater than 2, I can't solve.", eq);
 }
 
-void 	writepower(t_eq *eq)
+void	writepower(t_eq *eq)
 {
 	if (eq->i != 0)
 	{
@@ -38,7 +38,7 @@ void 	writepower(t_eq *eq)
 	write(1, " ", 1);
 }
 
-void 	morethantwo(t_eq *eq)
+void	morethantwo(t_eq *eq)
 {
 	ft_putstr("Reduced form: ");
 	eq->i = 0;
@@ -67,23 +67,15 @@ void 	morethantwo(t_eq *eq)
 static void	suiteaff(long valeur)
 {
 	if (valeur < 9)
-	{
 		ft_putstr("00000");
-		ft_putnbr(valeur);
-	}
 	else if (valeur < 99)
-	{
 		ft_putstr("0000");
-		ft_putnbr(valeur);
-	}
 	else if (valeur < 999)
-	{
 		ft_putstr("000");
-		ft_putnbr(valeur);
-	}
+	ft_putnbr(valeur);
 }
 
-void 	affdouble(double data)
+void	affdouble(double data)
 {
 	long		valeur;
 
@@ -101,16 +93,10 @@ void 	affdouble(double data)
 		if (valeur < 999)
 			suiteaff(valeur);
 		else if (valeur < 9999)
-		{
 			ft_putstr("00");
-			ft_putnbr(valeur);
-		}
 		else if (valeur < 99999)
-		{
 			ft_putstr("0");
-			ft_putnbr(valeur);
-		}
-		else
+		if (valeur >= 999)
 			ft_putnbr(valeur);
 	}
 }
