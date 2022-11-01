@@ -79,21 +79,20 @@ static size_t	get_n_words(char const *s, char c)
 	return (n);
 }
 
-char	**ft_strsplit2(char const *s, char c, t_eq *eq)
+char	**ft_strsplit2(char const *s, char c, t_eq *eq, size_t i)
 {
 	char		**ptr;
-	size_t		i;
 	size_t		j;
 
-	i = 0;
 	if (!s)
 		ft_error("Error in split", eq);
-	if (!(ptr = (char **)malloc(sizeof(*ptr) * (get_n_words(s, c) + 1))))
+	ptr = (char **)malloc(sizeof(*ptr) * (get_n_words(s, c) + 1));
+	if (!ptr)
 		ft_error("Error in split", eq);
 	while (i < get_n_words(s, c))
 	{
-		if (!(ptr[i] = (char *)malloc(sizeof(char) * (get_n_chars(s, c, i + 1)
-						+ 1))))
+		ptr[i] = (char *)malloc(sizeof(char) * (get_n_chars(s, c, i + 1) + 1));
+		if (!ptr[i])
 			ft_error("Error in split", eq);
 		j = 0;
 		while (j < get_n_chars(s, c, i + 1))

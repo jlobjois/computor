@@ -67,6 +67,6 @@ void	xzero(t_eq *eq);
 void	onesolution(t_eq *eq);
 void	seconddegree(t_eq *eq);
 void	affdouble(double data);
-char	**ft_strsplit2(char const *s, char c, t_eq *eq);
+char	**ft_strsplit2(char const *s, char c, t_eq *eq, size_t i);
 
 #endif
