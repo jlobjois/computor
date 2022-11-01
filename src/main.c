@@ -44,10 +44,10 @@ void	init(t_eq *eq, char **side0, char **side1)
 {
 	if (eq->max0 < 1 || eq->max1 < 1)
 		ft_error("size problem", eq);
-		eq->x = malloc((sizeof(double)) * (eq->nbx + 1));
+	eq->x = malloc((sizeof(double)) * (eq->nbx + 1));
 	if (!eq->x)
 		ft_error("malloc error", eq);
-		eq->deg = malloc((sizeof(int)) * (eq->nbx + 1));
+	eq->deg = malloc((sizeof(int)) * (eq->nbx + 1));
 	if (!eq->deg)
 		ft_error("malloc error", eq);
 	ft_bzero(eq->x, sizeof(double) * (eq->nbx + 1));
@@ -60,6 +60,9 @@ void	init(t_eq *eq, char **side0, char **side1)
 	parser(eq, side1, eq->max1);
 	eq->j = 0;
 	differentcases(eq);
+	free(eq->side[1]);
+	free(eq->side[0]);
+	free(eq->side);
 }
 
 int	main(int argc, char **argv)
