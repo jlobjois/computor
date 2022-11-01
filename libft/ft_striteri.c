@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 21:17:42 by jlobjois          #+#    #+#             */
-/*   Updated: 2016/11/19 21:17:44 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:39:56 by vgeorgak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (s && (*f))

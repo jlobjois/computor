@@ -6,13 +6,13 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 18:45:06 by jlobjois          #+#    #+#             */
-/*   Updated: 2016/11/24 18:46:19 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:44:23 by vgeorgak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
 	t_list		*tmp;
 	int			n;

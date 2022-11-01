@@ -6,13 +6,13 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 23:48:45 by jlobjois          #+#    #+#             */
-/*   Updated: 2016/11/19 23:48:47 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:44:04 by vgeorgak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		let_n_char(char const *s, char c, size_t id_w, size_t id_c)
+static char	let_n_char(char const *s, char c, size_t id_w, size_t id_c)
 {
 	size_t	n_words;
 	size_t	n_chars;
@@ -79,7 +79,7 @@ static size_t	get_n_words(char const *s, char c)
 	return (n);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	char	**ptr;
 	size_t	i;
@@ -93,7 +93,7 @@ char			**ft_strsplit(char const *s, char c)
 	while (i < get_n_words(s, c))
 	{
 		if (!(ptr[i] = (char *)malloc(sizeof(char) * (get_n_chars(s, c, i + 1)
-		+ 1))))
+						+ 1))))
 			return (NULL);
 		j = 0;
 		while (j < get_n_chars(s, c, i + 1))

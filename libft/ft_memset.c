@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 19:36:15 by jlobjois          #+#    #+#             */
-/*   Updated: 2016/11/17 19:38:46 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:46:41 by vgeorgak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (len == 0)

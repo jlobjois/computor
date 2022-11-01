@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 12:55:08 by jlobjois          #+#    #+#             */
-/*   Updated: 2016/09/08 16:57:24 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:33:30 by vgeorgak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_printtab(char **tab, void (*f)(const char *s), char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (tab == NULL)
