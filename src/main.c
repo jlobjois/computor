@@ -44,9 +44,11 @@ void	init(t_eq *eq, char **side0, char **side1)
 {
 	if (eq->max0 < 1 || eq->max1 < 1)
 		ft_error("size problem", eq);
-	if (!(eq->x = malloc((sizeof(double)) * (eq->nbx + 1))))
+		eq->x = malloc((sizeof(double)) * (eq->nbx + 1));
+	if (!eq->x)
 		ft_error("malloc error", eq);
-	if (!(eq->deg = malloc((sizeof(int)) * (eq->nbx + 1))))
+		eq->deg = malloc((sizeof(int)) * (eq->nbx + 1));
+	if (!eq->deg)
 		ft_error("malloc error", eq);
 	ft_bzero(eq->x, sizeof(double) * (eq->nbx + 1));
 	ft_bzero(eq->deg, sizeof(int) * (eq->nbx + 1));
@@ -63,24 +65,22 @@ void	init(t_eq *eq, char **side0, char **side1)
 int	main(int argc, char **argv)
 {
 	t_eq	eq;
-	char	**side;
-	char	**side0;
-	char	**side1;
 
 	ft_bzero(&eq, sizeof(eq));
 	if (argc != 2)
 		ft_error("wrong parameters", &eq);
-	if (!(side = ft_strsplit(argv[1], '=')))
+	eq.side = ft_strsplit(argv[1], '=');
+	if (!eq.side)
 		ft_error("error while strsplit", &eq);
-	if (!side[0] || !side[1])
+	if (!eq.side[0] || !eq.side[1])
 		ft_error("side[0] and side[1] do not exist", &eq);
-	if (side[2] != NULL)
+	if (eq.side[2] != NULL)
 		ft_error("less equals pls", &eq);
-	side0 = ft_strsplit2(side[0], ' ', &eq);
-	side1 = ft_strsplit2(side[1], ' ', &eq);
-	eq.max0 = get_max(&eq, side0);
-	eq.max1 = get_max(&eq, side1);
-	init(&eq, side0, side1);
+	eq.side0 = ft_strsplit2(eq.side[0], ' ', &eq, 0);
+	eq.side1 = ft_strsplit2(eq.side[1], ' ', &eq, 0);
+	eq.max0 = get_max(&eq, eq.side0);
+	eq.max1 = get_max(&eq, eq.side1);
+	init(&eq, eq.side0, eq.side1);
 	if (eq.x != NULL)
 		free(eq.x);
 	if (eq.deg != NULL)

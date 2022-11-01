@@ -40,6 +40,9 @@ typedef struct s_eq
 	double	sol1i;
 	double	sol2i;
 	double	*x;
+	char	**side;
+	char	**side0;
+	char	**side1;
 }	t_eq;
 
 void	writeone(t_eq *eq);

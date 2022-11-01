@@ -69,7 +69,6 @@ SRC =	ft_toupper.c\
 		ft_lstadd.c\
 		ft_lstiter.c\
 		ft_lstmap.c\
-		get_next_line.c\
 		ft_printtab.c
 
 SRCO = $(SRC:.c=.o)
