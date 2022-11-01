@@ -22,6 +22,7 @@ void	writeone(t_eq *eq)
 		write(1, " * X^", 5);
 		ft_putnbr((int)eq->deg[eq->i]);
 		write(1, " ", 1);
+		eq->x[eq->i] *= -1;
 	}
 	else
 	{

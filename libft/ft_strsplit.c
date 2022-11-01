@@ -81,8 +81,8 @@ static size_t	get_n_words(char const *s, char c)
 
 static char	**ft_looping(char **ptr, char const *s, char c)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (i < get_n_words(s, c))
@@ -106,10 +106,7 @@ static char	**ft_looping(char **ptr, char const *s, char c)
 char	**ft_strsplit(char const *s, char c)
 {
 	char	**ptr;
-	size_t	i;
-	size_t	j;
 
-	i = 0;
 	if (!s)
 		return (NULL);
 	ptr = (char **)malloc(sizeof(*ptr) * (get_n_words(s, c) + 1));

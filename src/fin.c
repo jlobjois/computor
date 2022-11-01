@@ -63,7 +63,7 @@ void	onesolution(t_eq *eq)
 	}
 	ft_putstr("= 0\n");
 	writepolynomial(eq);
-	eq->solr = (-eq->x[0]) / eq->x[1];
+	eq->solr = -eq->x[0] / eq->x[1];
 	ft_putstr("The solution is:\n");
 	affdouble(eq->solr);
 	write(1, "\n", 1);

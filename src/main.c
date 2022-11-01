@@ -40,18 +40,37 @@ int	get_max(t_eq *eq, char **side)
 	return (max);
 }
 
-void	init(t_eq *eq, char **side0, char **side1)
+static void	continue_init(t_eq *eq)
 {
 	if (eq->max0 < 1 || eq->max1 < 1)
 		ft_error("size problem", eq);
-	eq->x = malloc((sizeof(double)) * (eq->nbx + 1));
+	if (eq->nbx < 2)
+		eq->x = malloc((sizeof(double)) * (3));
+	else
+		eq->x = malloc((sizeof(double)) * (eq->nbx + 1));
 	if (!eq->x)
 		ft_error("malloc error", eq);
-	eq->deg = malloc((sizeof(int)) * (eq->nbx + 1));
+	if (eq->nbx < 2)
+		eq->deg = malloc((sizeof(int)) * (3));
+	else
+		eq->deg = malloc((sizeof(int)) * (eq->nbx + 1));
 	if (!eq->deg)
 		ft_error("malloc error", eq);
-	ft_bzero(eq->x, sizeof(double) * (eq->nbx + 1));
-	ft_bzero(eq->deg, sizeof(int) * (eq->nbx + 1));
+	if (eq->nbx < 2)
+	{
+		ft_bzero(eq->x, sizeof(double) * (3));
+		ft_bzero(eq->deg, sizeof(int) * (3));
+	}
+	else
+	{
+		ft_bzero(eq->x, sizeof(double) * (eq->nbx + 1));
+		ft_bzero(eq->deg, sizeof(int) * (eq->nbx + 1));
+	}
+}
+
+void	init(t_eq *eq, char **side0, char **side1)
+{
+	continue_init(eq);
 	eq->postequal = 1;
 	parser(eq, side0, eq->max0);
 	eq->postequal = -1;
