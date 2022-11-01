@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sqrt.c                                             :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/23 13:56:43 by jlobjois          #+#    #+#             */
-/*   Updated: 2017/09/23 13:56:45 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:24:46 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 double	ft_sqrt(double delta)
 {
-	double increase;
-	double try;
+	double	increase;
+	double	try;
 
 	increase = 1.0;
 	try = 0.0;
@@ -74,7 +74,7 @@ void	differentdelta(t_eq *eq)
 
 void	writepolynomial(t_eq *eq)
 {
-	int i;
+	int	i;
 
 	i = eq->nbx;
 	while (eq->deg[i] == 0 && eq->x[i] == 0)

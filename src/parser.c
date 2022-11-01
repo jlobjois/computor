@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/23 18:43:24 by jlobjois          #+#    #+#             */
-/*   Updated: 2017/09/23 18:43:25 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:03:46 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_str_is_numeric2(char *str, t_eq *eq)
 {
-	int i;
-	int test;
+	int	i;
+	int	test;
 
 	test = 0;
 	i = -1;
@@ -98,7 +98,7 @@ void	parser(t_eq *eq, char **side, int j)
 	}
 	else
 	{
-		while (side[eq->i] && side[eq->i + 1] != '\0')
+		while (side[eq->i] && side[eq->i + 1] != 0)
 		{
 			if (eq->i == 0 && eq->passage < 1)
 			{

@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/27 19:53:23 by jlobjois          #+#    #+#             */
-/*   Updated: 2017/09/27 19:53:26 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:13:41 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ void	seconddegree(t_eq *eq)
 	if (eq->delta > 0)
 	{
 		eq->sol1 = (((-eq->x[eq->deg1])
-		+ ft_sqrt(eq->delta)) / (2 * eq->x[eq->deg2]));
+					+ ft_sqrt(eq->delta)) / (2 * eq->x[eq->deg2]));
 		eq->sol2 = (((-eq->x[eq->deg1])
-		- ft_sqrt(eq->delta)) / (2 * eq->x[eq->deg2]));
+					- ft_sqrt(eq->delta)) / (2 * eq->x[eq->deg2]));
 	}
 	if (eq->delta == 0)
 		eq->sol1 = (-eq->x[eq->deg1]) / (2 * eq->x[eq->deg2]);

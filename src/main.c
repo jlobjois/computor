@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/23 13:55:00 by jlobjois          #+#    #+#             */
-/*   Updated: 2017/09/23 13:55:02 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:18:21 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_error(char *str, t_eq *eq)
 	exit(0);
 }
 
-int		get_max(t_eq *eq, char **side)
+int	get_max(t_eq *eq, char **side)
 {
 	int	max;
 
@@ -60,12 +60,12 @@ void	init(t_eq *eq, char **side0, char **side1)
 	differentcases(eq);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_eq eq;
-	char **side;
-	char **side0;
-	char **side1;
+	t_eq	eq;
+	char	**side;
+	char	**side0;
+	char	**side1;
 
 	ft_bzero(&eq, sizeof(eq));
 	if (argc != 2)

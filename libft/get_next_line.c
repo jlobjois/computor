@@ -22,7 +22,7 @@ static size_t		ft_strlensize(const char *str, const char c)
 	return (i);
 }
 
-static void			ft_read_buff(int fd, t_gnl *gnl)
+static void 		ft_read_buff(int fd, t_gnl *gnl)
 {
 	while ((ft_strchr(gnl->stock[fd], '\n') == 0)
 		&& (gnl->read_buff = read(fd, gnl->buff, BUFF_SIZE)) > 0)

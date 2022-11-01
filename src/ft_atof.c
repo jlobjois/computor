@@ -6,15 +6,15 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/17 20:11:13 by jlobjois          #+#    #+#             */
-/*   Updated: 2017/07/17 21:31:25 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:21:07 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "computor.h"
 
-double			suite(int i, char *str, double tmp, t_eq *eq)
+double	suite(int i, char *str, double tmp, t_eq *eq)
 {
-	double k;
+	double	k;
 
 	k = 10;
 	while (str[i] >= '0' && str[i] <= '9')
@@ -55,15 +55,15 @@ static double	ft_calcul(int i, int neg, char *str, t_eq *eq)
 	return (tmp);
 }
 
-double			ft_atof(char const *nptr, t_eq *eq)
+double	ft_atof(char const *nptr, t_eq *eq)
 {
-	int i;
-	int neg;
+	int	i;
+	int	neg;
 
 	neg = 1;
 	i = 0;
 	while (nptr[i] == ' ' || nptr[i] == '\t' || nptr[i] == '\n'
-			|| nptr[i] == '\f' || nptr[i] == '\v' || nptr[i] == '\r')
+		|| nptr[i] == '\f' || nptr[i] == '\v' || nptr[i] == '\r')
 		i++;
 	if (nptr[i] < '0' && nptr[i] > '9' && nptr[i] != '-' && nptr[i] != '+')
 		return (0);
@@ -78,7 +78,7 @@ double			ft_atof(char const *nptr, t_eq *eq)
 	return (ft_calcul(i, neg, (char *)nptr, eq));
 }
 
-void			insertpowervalue(t_eq *eq)
+void	insertpowervalue(t_eq *eq)
 {
 	eq->decalage = 0;
 	while (((eq->j + eq->decalage) < eq->nbx)
