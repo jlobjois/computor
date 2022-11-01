@@ -6,13 +6,13 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 18:52:31 by jlobjois          #+#    #+#             */
-/*   Updated: 2016/11/24 18:52:50 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:34:01 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
 	if (lst && f)
 	{

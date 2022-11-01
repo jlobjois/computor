@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 22:56:00 by jlobjois          #+#    #+#             */
-/*   Updated: 2022/11/01 17:02:09 by vgeorgak         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:48:43 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char *str;
+	char	*str;
 
-	str = (char*)s;
+	str = (char *)s;
 	if (str || str == 0)
 	{
 		while (*str)

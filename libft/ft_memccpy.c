@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 20:54:48 by jlobjois          #+#    #+#             */
-/*   Updated: 2016/11/17 20:54:51 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:47:25 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < (int)n)

@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 22:08:12 by jlobjois          #+#    #+#             */
-/*   Updated: 2016/11/19 22:08:13 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:32:23 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(tab = (char *)malloc(sizeof(char) * (ft_strlen(s1)
-	+ ft_strlen(s2) + 1))))
+	tab = (char *)malloc(sizeof(char) * (ft_strlen(s1)
+				+ ft_strlen(s2) + 1));
+	if (!tab)
 		return (NULL);
 	while (s1[i])
 	{

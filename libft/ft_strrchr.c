@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 22:56:00 by jlobjois          #+#    #+#             */
-/*   Updated: 2016/11/15 18:23:16 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:39:29 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int n;
+	int	n;
 
 	n = 0;
 	while (s[n])
@@ -22,7 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 	while (n >= 0)
 	{
 		if (s[n] == c)
-			return (char *)(&s[n]);
+			return ((char *)(&s[n]));
 		n--;
 	}
 	return (0);

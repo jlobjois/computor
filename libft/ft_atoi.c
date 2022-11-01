@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 09:35:26 by jlobjois          #+#    #+#             */
-/*   Updated: 2016/11/15 22:17:51 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:50:18 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static long	ft_calcul(int i, int neg, char *str)
 {
-	long tmp;
-	long n;
+	long	tmp;
+	long	n;
 
 	tmp = 0;
 	n = 0;
@@ -31,15 +31,15 @@ static long	ft_calcul(int i, int neg, char *str)
 	return (tmp);
 }
 
-long		ft_atoi(char const *nptr)
+long	ft_atoi(char const *nptr)
 {
-	int i;
-	int neg;
+	int	i;
+	int	neg;
 
 	neg = 1;
 	i = 0;
 	while (nptr[i] == ' ' || nptr[i] == '\t' || nptr[i] == '\n'
-			|| nptr[i] == '\f' || nptr[i] == '\v' || nptr[i] == '\r')
+		|| nptr[i] == '\f' || nptr[i] == '\v' || nptr[i] == '\r')
 		i++;
 	if (nptr[i] < '0' && nptr[i] > '9' && nptr[i] != '-' && nptr[i] != '+')
 		return (0);
