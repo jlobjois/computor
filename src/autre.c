@@ -6,15 +6,15 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/29 18:58:01 by jlobjois          #+#    #+#             */
-/*   Updated: 2022/11/01 17:24:01 by jlobjois         ###   ########.fr       */
+/*   Updated: 2017/09/29 18:58:03 by jlobjois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "computor.h"
 
-void	writepowerovertwo(t_eq *eq)
+void 	writepowerovertwo(t_eq *eq)
 {
-	int	i;
+	int		i;
 
 	i = eq->nbx;
 	while (eq->deg[i] == 0 && eq->x[i] == 0)
@@ -26,7 +26,7 @@ void	writepowerovertwo(t_eq *eq)
 	ft_error(" is stricly greater than 2, I can't solve.", eq);
 }
 
-void	writepower(t_eq *eq)
+void 	writepower(t_eq *eq)
 {
 	if (eq->i != 0)
 	{
@@ -38,7 +38,7 @@ void	writepower(t_eq *eq)
 	write(1, " ", 1);
 }
 
-void	morethantwo(t_eq *eq)
+void 	morethantwo(t_eq *eq)
 {
 	ft_putstr("Reduced form: ");
 	eq->i = 0;
@@ -83,7 +83,7 @@ static void	suiteaff(long valeur)
 	}
 }
 
-void	affdouble(double data)
+void 	affdouble(double data)
 {
 	long		valeur;
 

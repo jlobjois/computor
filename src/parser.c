@@ -92,17 +92,15 @@ void	parser(t_eq *eq, char **side, int j)
 {
 	eq->signe = 1;
 	if (j < 3)
-	{
 		firstcheck(eq, side, j);
-		secondcheck(eq, side, j);
-	}
 	else
 	{
 		while (side[eq->i] && side[eq->i + 1] != 0)
 		{
 			if (eq->i == 0 && eq->passage < 1)
 			{
-				if (((eq->tmp = ft_atof(side[eq->i], eq)) == 0.000000))
+				eq->tmp = ft_atof(side[eq->i], eq);
+				if (eq->tmp == 0.000000)
 				{
 					thirdcheck(eq, side);
 					eq->test++;

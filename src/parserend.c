@@ -12,23 +12,6 @@
 
 #include "computor.h"
 
-void	firstcheck(t_eq *eq, char **side, int j)
-{
-	if (j == 1)
-	{
-		if (((eq->tmp = ft_atof(side[eq->i], eq)) == 0.000000))
-		{
-			if (side[eq->i][0] != '0' || side[eq->i][1] != '\0')
-				ft_error("wrong argument atof", eq);
-		}
-		else
-		{
-			ft_str_is_numeric2(side[eq->i], eq);
-			eq->x[0] += (eq->tmp * eq->postequal * eq->signe);
-		}
-	}
-}
-
 void	secondcheck(t_eq *eq, char **side, int j)
 {
 	if (j == 2)
@@ -39,7 +22,8 @@ void	secondcheck(t_eq *eq, char **side, int j)
 			eq->signe = 1;
 		if (side[0][0] == '-')
 			eq->signe = -1;
-		if (((eq->tmp = ft_atof(side[1], eq)) == 0.000000))
+		eq->tmp = ft_atof(side[1], eq);
+		if (eq->tmp == 0.000000)
 		{
 			if (side[1][0] != '0' || side[1][1] != '\0')
 				ft_error("wrong argument atof", eq);
@@ -50,6 +34,25 @@ void	secondcheck(t_eq *eq, char **side, int j)
 			eq->x[0] += (eq->tmp * eq->postequal * eq->signe);
 		}
 	}
+}
+
+void	firstcheck(t_eq *eq, char **side, int j)
+{
+	if (j == 1)
+	{
+		eq->tmp = ft_atof(side[eq->i], eq);
+		if (eq->tmp == 0.000000)
+		{
+			if (side[eq->i][0] != '0' || side[eq->i][1] != '\0')
+				ft_error("wrong argument atof", eq);
+		}
+		else
+		{
+			ft_str_is_numeric2(side[eq->i], eq);
+			eq->x[0] += (eq->tmp * eq->postequal * eq->signe);
+		}
+	}
+	secondcheck(eq, side, j);
 }
 
 void	thirdcheck(t_eq *eq, char **side)
@@ -88,8 +91,8 @@ void	fifthcheck(t_eq *eq, char **side)
 {
 	if (side[eq->i][0] != 'X' && side[eq->i][1] != '^')
 		ft_error("wrong arguments 6", eq);
-	if (((eq->tmpdeg = ft_atoi(&side[eq->i][2])) == 0)
-		&& side[eq->i][2] != '0')
+	eq->tmpdeg = ft_atoi(&side[eq->i][2]);
+	if (eq->tmpdeg == 0 && side[eq->i][2] != '0')
 		ft_error("wrong arguments 7", eq);
 	if (eq->tmpdeg < 0)
 		ft_error("wrong arguments 8", eq);
@@ -99,7 +102,7 @@ void	fifthcheck(t_eq *eq, char **side)
 	else
 	{
 		while (eq->j > 1 && ((eq->tmpdeg < eq->j)
-			|| eq->tmpdeg <= eq->deg[eq->j - 1]
+				|| eq->tmpdeg <= eq->deg[eq->j - 1]
 				|| (eq->deg[eq->j - 1] == 0 && eq->deg[eq->j] == 0)))
 			eq->j--;
 	}

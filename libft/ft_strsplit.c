@@ -88,12 +88,13 @@ char	**ft_strsplit(char const *s, char c)
 	i = 0;
 	if (!s)
 		return (NULL);
-	if (!(ptr = (char **)malloc(sizeof(*ptr) * (get_n_words(s, c) + 1))))
+	ptr = (char **)malloc(sizeof(*ptr) * (get_n_words(s, c) + 1));
+	if (!ptr)
 		return (NULL);
 	while (i < get_n_words(s, c))
 	{
-		if (!(ptr[i] = (char *)malloc(sizeof(char) * (get_n_chars(s, c, i + 1)
-						+ 1))))
+		ptr[i] = (char *)malloc(sizeof(char) * (get_n_chars(s, c, i + 1) + 1));
+		if (!ptr[i])
 			return (NULL);
 		j = 0;
 		while (j < get_n_chars(s, c, i + 1))
