@@ -6,7 +6,7 @@
 /*   By: jlobjois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 11:47:39 by jlobjois          #+#    #+#             */
-/*   Updated: 2016/11/15 18:19:40 by jlobjois         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:39:38 by vgeorgak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_str_is_printable(char *str)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (str[++i])
